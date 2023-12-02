@@ -1,3 +1,50 @@
+# Problem 1160
+# https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/description/?envType=daily-question&envId=2023-12-02 
+
+# You are given an array of strings words and a string chars.
+# A string is good if it can be formed by characters from chars (each character can only be used once).
+# Return the sum of lengths of all good strings in words.
+
+# Example 1:
+# Input: words = ["cat","bt","hat","tree"], chars = "atach"
+# Output: 6
+# Explanation: The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
+
+
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        # create var to store good words
+        # loop through each word in array 
+        # for each word in array, loop thru each character in the word and check if that char is in chars. 
+            # if char in chars, pop it off
+            # if char not in chars, move to next word in array
+        # get length of each word in good words list 
+        # add together lengths
+        # return sum
+        good_words = []
+        
+        for word in words: 
+            char_list = list(chars) #[a t a c h]
+            new_word = ""
+            for char in word: # c
+                if char in char_list: 
+                    i = char_list.index(char)
+                    char_list.pop(i) 
+                    new_word += char
+                if word == new_word:
+                    good_words.append(new_word)
+        
+        print(good_words)
+        sum_of_lengths = 0
+        for word in good_words:
+            sum_of_lengths += len(word)
+
+        return sum_of_lengths
+
+
+
+
+
 # Problem 2169
 # https://leetcode.com/problems/count-operations-to-obtain-zero/description/
 # You are given two non-negative integers num1 and num2.
